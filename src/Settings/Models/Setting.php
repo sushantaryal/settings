@@ -25,8 +25,8 @@ class Setting extends Model
 	/**
      * Create and persist a new setting.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param  array  $attributes
+	 * @return mixed
      */
     public function set(array $attributes)
     {
