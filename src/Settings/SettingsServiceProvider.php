@@ -7,39 +7,39 @@ use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-    
-    /**
-     *
-     * @return void
-     */
-    public function boot()
-    {
-	    $this->loadRoutesFrom(__DIR__.'/routes/admin.php');
+	/**
+	 * Indicates if loading of the provider is deferred.
+	 *
+	 * @var bool
+	 */
+	protected $defer = false;
 
-	    $this->loadMigrationsFrom(__DIR__.'/../migrations');
+	/**
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->loadRoutesFrom(__DIR__ . '/routes/admin.php');
 
-	    $this->loadViewsFrom(__DIR__.'/../views', 'settings');
+		$this->loadMigrationsFrom(__DIR__ . '/../migrations');
 
-	    $this->publishes([
-		    __DIR__.'/../migrations' => database_path('migrations'),
-	    ]);
-    }
+		$this->loadViewsFrom(__DIR__ . '/../views', 'settings');
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->singleton('settings', function($app) {
-            return Setting::pluck('value', 'name');
-        });
-    }
+		$this->publishes([
+			__DIR__ . '/../migrations' => database_path('migrations'),
+		]);
+	}
+
+	/**
+	 * Register any application services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		$this->app->singleton('settings', function () {
+			return Setting::pluck('value', 'name');
+		});
+	}
 }
