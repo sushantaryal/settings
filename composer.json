@@ -1,7 +1,7 @@
 {
     "name": "taggers/settings",
     "description": "Taggers CMS settings module",
-    "license": "personal",
+    "license": "MIT",
     "authors": [
         {
             "name": "Sushant Aryal",
